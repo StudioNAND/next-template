@@ -5,14 +5,14 @@
   "license": "MIT",
   "repository": "StudioNAND/electron-next",
   "scripts": {
-    "start": "next",
+    "start": "node ./server/index.js",
     "build": "next build",
-    "serve": "next start",
+    "serve": "NODE_ENV=production node ./server/index.js",
     "precommit-msg": "echo '\n Running prettier and eslint before commiting \n'",
-    "prettier": "prettier --config ./node_modules/@studionand/eslint-config/prettier.config.js --ignore-path .eslintignore --list-different \"src/**\" \"main/**\"",
-    "prettier:fix": "prettier --config ./node_modules/@studionand/eslint-config/prettier.config.js --ignore-path .eslintignore --write \"src/**\" \"main/**\"",
-    "eslint": "eslint src main",
-    "eslint:fix": "eslint --fix src main"
+    "prettier": "prettier --config ./node_modules/@studionand/eslint-config/prettier.config.js --ignore-path .eslintignore --list-different \"src/**\" \"components/**\" \"server/**\" \"pages/**\" \"utils/**\" \"stores/**\"",
+    "prettier:fix": "prettier --config ./node_modules/@studionand/eslint-config/prettier.config.js --ignore-path .eslintignore --write \"src/**\" \"components/**\" \"server/**\" \"pages/**\" \"utils/**\" \"stores/**\"",
+    "eslint": "eslint stores server utils pages components",
+    "eslint:fix": "eslint --fix stores server utils pages components"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -30,13 +30,16 @@
   "dependencies": {
     "@material-ui/core": "^3.2.0",
     "@material-ui/icons": "^3.0.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^6.1.0",
     "electron-is-dev": "^1.0.1",
     "electron-next": "^3.1.5",
+    "express": "^4.16.4",
     "jss": "^9.8.7",
     "mobx": "^5.5.0",
     "mobx-react": "^5.2.8",
     "next": "^7.0.1",
+    "next-routes": "^1.4.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
