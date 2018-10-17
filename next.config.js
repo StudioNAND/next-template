@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
 const webpack = require('webpack');
+const clearRequireCachePlugin = require('webpack-clear-require-cache-plugin');
 
-dotenv.config();
+const isDev = process.env.NODE_ENV !== 'production';
 
 exports.webpack = config =>
   Object.assign(config, {
@@ -10,9 +11,11 @@ exports.webpack = config =>
       new webpack.EnvironmentPlugin({
         ...dotenv.config().parsed,
       }),
+      isDev &&
+        clearRequireCachePlugin([
+          /\.next\/server\/static\/development\/pages/,
+          /\.next\/server\/ssr-module-cache.js/,
+          /ada-next/,
+        ]),
     ],
   });
-
-exports.exportPathMap = () => ({
-  '/': { page: '/' },
-});

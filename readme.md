@@ -5,6 +5,7 @@ This repo is meant to be the template to start a new frontend project @StudioNAN
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
   - [Server side rendering](#server-side-rendering)
+  - [Adding more pages](#adding-more-pages)
   - [Environment variables](#environment-variables)
 - [ESlint and Prettier](#eslint-and-prettier)
   - [ESLint pre-commit hook](#eslint-pre-commit-hook)
@@ -14,6 +15,9 @@ ___________
 
 ## Project structure
 
+- `/server/index`: the custom next.js server
+- `/server/routes`: the routes configuration
+- `/server/constants`: variables used for the server
 - `/pages`: All main entry points of the application
 - `/components`: All components that define the application
 - `/utils`: All utility functions
@@ -25,6 +29,13 @@ ___________
 - `npm start`: start application in development mode
 - `npm run dist`: build production app
 - `npm run serve`: serve production app
+
+By default the server will start on `0.0.0.0:8000`. You can change the port by defining `HOSTNAME` and `PORT` inside the `.env` file in your root directory.
+
+```
+HOSTNAME=0.0.0.0
+PORT=8001
+```
 
 ### Server Side Rendering
 The whole setup makes use of server-side-rendering. This means that any library that depends on the `window` will result in an internal error. In order to avoid any problem caused by modules that depend on the window you can use the `src/utils/async.js` decorator.
@@ -56,9 +67,16 @@ render() {
 }
 ```
 
+### Adding more pages
+
+The template uses a [custom server and routing](https://github.com/zeit/next.js/#custom-server-and-routing) by default. This gives us more flexibility in terms of how we design our entry points of the application.
+When a new page is created in `/pages` the equivalent route needs to be created in `/server/routes.js`.
+
+##### Note: We are still not 100% happy with this setup and probably can optimize this. If you have an idea please open an issue for discussing a new approach on custom routing
+
 ### Environment variables
 
-If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `main.js` and all variables will be bundled into the production build via `webpack.EnvironmentPlugin`.
+If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `server/index.js` and all variables will be bundled into the production build via `webpack.EnvironmentPlugin`.
 
 ## ESLint and Prettier
 

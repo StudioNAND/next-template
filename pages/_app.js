@@ -4,6 +4,7 @@ import { Provider as MobxProvider } from 'mobx-react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
+import AdaStoreProvider from 'ada-next/lib/utils/AdaStoreProvider';
 import getPageContext from '../utils/getPageContext';
 import dataStore from '../stores/index';
 
@@ -11,6 +12,16 @@ class MyApp extends App {
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
+  }
+
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+    await AdaStoreProvider.initStores(ctx);
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+    const storeProviderProps = await AdaStoreProvider.getSnapshots(ctx);
+    return { pageProps, storeProviderProps };
   }
 
   componentDidMount() {
@@ -22,7 +33,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, storeProviderProps } = this.props;
     return (
       <Container>
         {/* Wrap every page in Jss and Theme providers */}
@@ -41,7 +52,9 @@ class MyApp extends App {
             {/* Pass pageContext to the _document though the renderPage enhancer
                 to render collected styles on server side. */}
             <MobxProvider dataStore={dataStore}>
-              <Component pageContext={this.pageContext} {...pageProps} />
+              <AdaStoreProvider {...storeProviderProps}>
+                <Component pageContext={this.pageContext} {...pageProps} />
+              </AdaStoreProvider>
             </MobxProvider>
           </MuiThemeProvider>
         </JssProvider>
