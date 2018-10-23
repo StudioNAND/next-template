@@ -7,6 +7,7 @@ This repo is meant to be the template to start a new frontend project @StudioNAN
   - [Server side rendering](#server-side-rendering)
   - [Adding more pages](#adding-more-pages)
   - [Environment variables](#environment-variables)
+  - [Working with linked modules](#working-with-linked-modules)
 - [ESlint and Prettier](#eslint-and-prettier)
   - [ESLint pre-commit hook](#eslint-pre-commit-hook)
 - [Material-UI and JSS](#material-ui-and-jss)
@@ -77,6 +78,14 @@ When a new page is created in `/pages` the equivalent route needs to be created 
 ### Environment variables
 
 If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `server/index.js` and all variables will be bundled into the production build via `webpack.EnvironmentPlugin`.
+
+### Working with linked modules
+
+In some cases it might make sense to work on a shared module inside the next.js setup. The most convenient way of doing that is using `npm link` to link your local module into the `node_modules` folder. While next.js hot reloading works well on the client; the server does not re-load changes because the modules are loaded from the `require.cache`. This will result in client and server rendering getting out of sync.
+
+You can use our [webpack-clear-require-cache-plugin](https://github.com/maerzhase/webpack-clear-require-cache-plugin#nextjs-example) to solve this problem for now.
+
+##### Note: there is an open issue in next.js that maybe will fix this problem in next.js directly https://github.com/zeit/next.js/issues/5463
 
 ## ESLint and Prettier
 
