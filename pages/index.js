@@ -1,3 +1,14 @@
-import DashboardPages from 'ada-next/lib/pages/DashboardPages';
+import React, { Component } from 'react';
+import WindowSize from '../components/WindowSize';
 
-export default DashboardPages;
+class IndexPage extends Component {
+  render() {
+    return (
+      <div>
+        <WindowSize />
+      </div>
+    );
+  }
+}
+
+export default IndexPage;
