@@ -1,7 +1,7 @@
 {
   "name": "electron-next",
   "version": "0.0.1",
-  "main": "main/index.js",
+  "main": "server/index.js",
   "license": "MIT",
   "repository": "StudioNAND/electron-next",
   "scripts": {
