@@ -90,23 +90,14 @@ You can use our [webpack-clear-require-cache-plugin](https://github.com/maerzhas
 
 ## ESLint and Prettier
 
-This project uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/). We are using the [@studionand/eslint-config](https://www.npmjs.com/package/@studionand/eslint-config) which is configured with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) in order to run checks for prettier-formatting via eslint. You can find the prettier configuration as `prettier.config.js` file inside the `@studionand/eslint-config` module.
+This project uses [ESLint](https://eslint.org/). We are using the [@studionand/eslint-config](https://www.npmjs.com/package/@studionand/eslint-config) which is configured with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) in order to run checks for prettier-formatting via eslint. You can find the prettier configuration as `prettier.config.js` file inside the `@studionand/eslint-config` module.
 
 Using `eslint-plugin-prettier` over prettier CLI has the advantage that errors are properly printed to the console. When running `npm run eslint:fix` it will also fix all prettier formatting rules.
 
 - `npm run eslint` for running eslint
 - `npm run eslint:fix` for running eslint and fix if possible
-- `npm run prettier` for running prettier separately
-- `npm run prettier:fix` for running prettier separately and write changes to the files
-- `npm run format` for running 1. `npm run prettier` 2. `npm run eslint`
 
 ##### Note: It is possible that we still have conflicting rules between the `eslint` and `prettier`, because we are not using `eslint-config-prettier` yet. Please open an issue if you experience any problems with the linting configuration.
-
-### ESLint pre-commit hook
-
-Currently we are using the `pre-commit` module in order to run the `npm run eslint` command before each `git commit`. This means you can only commit properly linted and prettified code. Since modified files would not be added to the stage automatically upon pre-commit hook, files are not modified in the pre-commit hook. Please use `npm run eslint:fix` in order to overwrite files with automatic fixes.
-
-##### Note: The `pre-commit` feature is considered an experimental feature. If you experience it as annoying it can be removed. Please write an issue if you want to further discuss this.
 
 ## Material-UI and JSS
 

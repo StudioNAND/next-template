@@ -22,7 +22,7 @@ const {
 const dev = NODE_ENV !== 'production'
 
 // create a next server instance
-const nextApp = next({ dev: true });
+const nextApp = next({ dev: true, dir: './src' });
 
 // use `next-routes` configuration and bind the next request handler to it
 const nextRouteHandle = routes.getRequestHandler(nextApp);

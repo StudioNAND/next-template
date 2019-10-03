@@ -13,12 +13,6 @@ class WindowSize extends React.Component {
     this.props.dataStore.setWindowSize();
     window.addEventListener('resize', this.props.dataStore.setWindowSize);
   }
-
-  handleWindowResize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-  }
-
   render() {
     const { dataStore } = this.props;
     return (
