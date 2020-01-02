@@ -1,9 +1,9 @@
 {
-  "name": "electron-next",
-  "version": "0.0.2",
+  "name": "next-template",
+  "version": "0.0.3",
   "main": "server/index.js",
   "license": "MIT",
-  "repository": "StudioNAND/electron-next",
+  "repository": "StudioNAND/next-template",
   "scripts": {
     "start": "node ./src/server/index.js",
     "build": "next build",
@@ -12,9 +12,9 @@
     "eslint:fix": "eslint --fix src"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
     "@studionand/eslint-config": "0.0.23",
     "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.18.2",
@@ -23,25 +23,24 @@
     "eslint-plugin-react": "^7.15.1",
     "prettier": "^1.18.2",
     "webpack": "^4.41.0",
-    "webpack-clear-require-cache-plugin": "0.0.2"
+    "webpack-clear-require-cache-plugin": "0.0.3"
   },
   "dependencies": {
-    "@material-ui/core": "^4.5.0",
-    "@material-ui/icons": "^4.4.3",
-    "@material-ui/lab": "^4.0.0-alpha.28",
-    "@material-ui/styles": "^4.5.0",
+    "@material-ui/core": "^4.8.2",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.32",
+    "@material-ui/styles": "^4.8.2",
     "cookie-parser": "^1.4.4",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mobx": "^5.14.0",
-    "mobx-react": "^6.1.3",
-    "mobx-state-tree": "^3.14.1",
-    "next": "^9.0.7",
-    "next-routes": "^1.4.2",
+    "mobx": "^5.15.1",
+    "mobx-react": "^6.1.4",
+    "mobx-state-tree": "^3.15.0",
+    "next": "^9.1.6",
     "prop-types": "^15.7.2",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "styled-jsx": "^3.2.2"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-jsx": "^3.2.4"
   },
   "eslintConfig": {
     "extends": [

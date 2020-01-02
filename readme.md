@@ -4,8 +4,6 @@ This repo is meant to be the template to start a new frontend project @StudioNAN
 
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
-  - [Server side rendering](#server-side-rendering)
-  - [Adding more pages](#adding-more-pages)
   - [Environment variables](#environment-variables)
   - [Working with linked modules](#working-with-linked-modules)
 - [ESlint and Prettier](#eslint-and-prettier)
@@ -37,43 +35,6 @@ By default the server will start on `0.0.0.0:8000`. You can change the port by d
 HOSTNAME=0.0.0.0
 PORT=8001
 ```
-
-### Server Side Rendering
-The whole setup makes use of server-side-rendering. This means that any library that depends on the `window` will result in an internal error. In order to avoid any problem caused by modules that depend on the window you can use the `src/utils/async.js` decorator.
-
-The `async` decorator accepts `Promises` that will be propagated as props to the wrapped component when they are resolved.
-
-```JavaScript
-@async(
-  () =>
-    new Promise(resolve => {
-      resolve({
-        MyAsyncComponent: require('../components/MyAsyncComponent').default,
-      });
-    }),
-)
-class Index extends React.Component {
-```
-
-Since `async` will only start resolving the promises on `onComponentDidMount` they wont be resolved on the server. This means that `MyAsyncComponent` will be `null` on the initial render. Make sure that you check for this case.
-
-```JavaScript
-render() {
-  const { MyAsyncComponent } = this.props;
-  return (
-    <div>
-      {MyAsyncComponent && <MyAsyncComponent />}
-    </div>
-  );
-}
-```
-
-### Adding more pages
-
-The template uses a [custom server and routing](https://github.com/zeit/next.js/#custom-server-and-routing) by default. This gives us more flexibility in terms of how we design our entry points of the application.
-When a new page is created in `/pages` the equivalent route needs to be created in `/server/routes.js`.
-
-##### Note: We are still not 100% happy with this setup and probably can optimize this. If you have an idea please open an issue for discussing a new approach on custom routing
 
 ### Environment variables
 

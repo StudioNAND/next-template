@@ -2,24 +2,11 @@ import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'mobx-react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
+import CssBaseline from '../CssBaseline';
 import dataStore from '../stores/index';
 
-const styles = () => ({
-  '@global': {
-    html: {
-      fontSize: `${theme.htmlFontSize}px`,
-    },
-    body: {
-      backgroundColor: theme.palette.background.page,
-      color: theme.palette.text.default,
-    },
-  },
-});
-
-@withStyles(styles)
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const isServer = typeof window === 'undefined';
