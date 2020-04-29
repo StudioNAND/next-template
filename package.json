@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/plugin-proposal-decorators": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@studionand/eslint-config": "0.0.34",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
