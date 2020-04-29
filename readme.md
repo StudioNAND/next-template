@@ -22,32 +22,32 @@ ___________
 - `/utils`: All utility functions
 - `/stores`: All stores that hold the state of the application
 
-
 ## Getting started
+
+You must create a `.npmrc` file to access the @studionand github registry.
+
+```
+registry=https://npm.pkg.github.com/studionand
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+```
+
+> [how to create github token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 
 - `npm start`: start application in development mode
 - `npm run dist`: build production app
 - `npm run serve`: serve production app
 
-By default the server will start on `0.0.0.0:8000`. You can change the port by defining `HOSTNAME` and `PORT` inside the `.env` file in your root directory.
+By default the server will start on `0.0.0.0:80`. You can change the port by defining `HOSTNAME` and `PORT` inside the `.env` file in your root directory.
 
 ```
 HOSTNAME=0.0.0.0
-PORT=8001
+PORT=80
 ```
 
 ### Environment variables
 
-If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `server/index.js` and all variables will be bundled into the production build via `webpack.EnvironmentPlugin`.
+If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `server/constants.js` and all variables will be bundled into the production build via next-js.
 
-
-### Working with linked modules
-
-In some cases it might make sense to work on a shared module inside the next.js setup. The most convenient way of doing that is using `npm link` to link your local module into the `node_modules` folder. While next.js hot reloading works well on the client; the server does not re-load changes because the modules are loaded from the `require.cache`. This will result in client and server rendering getting out of sync.
-
-You can use our [webpack-clear-require-cache-plugin](https://github.com/maerzhase/webpack-clear-require-cache-plugin#nextjs-example) to solve this problem for now.
-
-##### Note: there is an open issue in next.js that maybe will fix this problem in next.js directly https://github.com/zeit/next.js/issues/5463
 
 ## ESLint and Prettier
 

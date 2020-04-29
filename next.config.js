@@ -1,21 +1,19 @@
-const dotenv = require('dotenv');
-const webpack = require('webpack');
-const clearRequireCachePlugin = require('webpack-clear-require-cache-plugin');
+const config = {
+  webpack: function(cfg) {
+    const originalEntry = cfg.entry;
+    cfg.entry = async () => {
+      const entries = await originalEntry();
+      if (
+        entries['main.js'] &&
+        !entries['main.js'].includes('./polyfills.js')
+      ) {
+        entries['main.js'].unshift('./polyfills.js');
+      }
 
-const isDev = process.env.NODE_ENV !== 'production';
+      return entries;
+    };
+    return cfg;
+  },
+};
 
-exports.webpack = config =>
-  Object.assign(config, {
-    plugins: [
-      ...config.plugins,
-      new webpack.EnvironmentPlugin({
-        ...dotenv.config().parsed,
-      }),
-      isDev &&
-        clearRequireCachePlugin([
-          /\.next\/server\/static\/development\/pages/,
-          /\.next\/server\/ssr-module-cache.js/,
-          /ada-next/,
-        ]),
-    ],
-  });
+module.exports = config;

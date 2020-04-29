@@ -1,35 +1,21 @@
-/* eslint-disable */
 const next = require('next');
 const express = require('express');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const mobxReact = require('mobx-react');
-const { parse } = require('url');
-const {
-  DEFAULT_HOSTNAME,
-  DEFAULT_PORT,
-} = require('./constants');
-const dotenv = require('dotenv');
+const { NODE_ENV, HOSTNAME, PORT } = require('./constants');
 
-dotenv.config();
-
-const {
-  NODE_ENV='development',
-  HOSTNAME=DEFAULT_HOSTNAME,
-  PORT=DEFAULT_PORT
-} = process.env;
-
-const dev = NODE_ENV !== 'production'
+const dev = NODE_ENV !== 'production';
 
 // create a next server instance
-const nextApp = next({ dev: true, dir: './src' });
-
-const handle = nextApp.getRequestHandler()
+const nextApp = next({ dev, dir: './src' });
+const handle = nextApp.getRequestHandler();
 
 // prevents mobx server memory leak
 mobxReact.useStaticRendering(true);
 
 // boots the custom server
-async function boostrap(){
+async function boostrap() {
   // wait until next is ready
   await nextApp.prepare();
   // open express to have a custom server
@@ -44,8 +30,7 @@ async function boostrap(){
 }
 
 // prepare nextApp, start express and config… then
-boostrap()
-  .catch(exception => {
-    console.error(exception.stack); // eslint-disable-line no-console
-    process.exit(1);
-  });
+boostrap().catch(exception => {
+  console.error(exception.stack); // eslint-disable-line no-console
+  process.exit(1);
+});
