@@ -1,18 +1,17 @@
-import { observable, action } from 'mobx';
+import DataStore from './DataStore';
+// import UiStore from './UiStore';
 
-class DataStore {
-  @observable
-  width = 0;
-  @observable
-  height = 0;
+export const getStoreInstances = () => {
+  const dataStore = new DataStore();
+  // const uiStore = new UiStore();
 
-  @action.bound
-  setWindowSize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+  // uiStore.connectStores({ dataStore });
+  // dataStore.connectStores({ uiStore });
+
+  if (global.window) {
+    window.ds = dataStore;
+    // window.us = uiStore;
   }
-}
 
-const dataStore = new DataStore();
-
-export default dataStore;
+  return { dataStore };
+};

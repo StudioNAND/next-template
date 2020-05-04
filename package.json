@@ -1,6 +1,6 @@
 {
   "name": "@studionand/next-template",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "server/index.js",
   "license": "MIT",
   "repository": "studionand/next-template",
