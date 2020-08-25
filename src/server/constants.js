@@ -1,9 +1,5 @@
-const dotenv = require('dotenv');
-
 const HOSTNAME = '0.0.0.0';
 const DEFAULT_PORT = 9999;
-
-dotenv.config();
 
 const {
   NODE_ENV = 'development',

@@ -46,7 +46,7 @@ PORT=80
 
 ### Environment variables
 
-If you want to make use of `process.env` variables e.g. for adding tokens or secrets to your application, just create a `.env` file inside the root directory. The `.env` file will be loaded via `dotenv` module inside the `server/constants.js` and all variables will be bundled into the production build via next-js.
+Next.js now comes with its own solution for environment variables: [see here](https://nextjs.org/docs/basic-features/environment-variables)
 
 
 ## ESLint and Prettier
