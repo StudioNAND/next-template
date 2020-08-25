@@ -45,7 +45,7 @@ Next.js now comes with its own solution for environment variables: [see here](ht
 
 ## ESLint and Prettier
 
-This project uses [ESLint](https://eslint.org/). We are using the [@studionand/eslint-config](https://www.npmjs.com/package/@studionand/eslint-config) which is configured with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) in order to run checks for prettier-formatting via eslint. You can find the prettier configuration as `prettier.config.js` file inside the `@studionand/eslint-config` module.
+This project uses [ESLint](https://eslint.org/). We are using the [@studionand/eslint-config](https://github.com/StudioNAND/core-js/tree/master/packages/eslint-config) which is configured with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) in order to run checks for prettier-formatting via eslint. You can find the prettier configuration as `prettier.config.js` file inside the `@studionand/eslint-config` module.
 
 Using `eslint-plugin-prettier` over prettier CLI has the advantage that errors are properly printed to the console. When running `npm run eslint:fix` it will also fix all prettier formatting rules.
 
