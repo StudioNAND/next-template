@@ -19,7 +19,7 @@ ___________
 - `src/components`: All components that define the application
 - `src/utils`: All utility functions
 - `src/stores`: All stores that hold the state of the application
-- `src/.env`: Default environment variables [details](https://nextjs.org/docs/basic-features/environment-variables#default-environment-variables)
+- `src/.env`: Default environment variables [(read more)](https://nextjs.org/docs/basic-features/environment-variables#default-environment-variables)
 
 ## Getting started
 
