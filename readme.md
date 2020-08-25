@@ -2,7 +2,7 @@
 
 To setup a new project based on this template, just run:
 
-`npx create-next-app your_project_name --use-npm --example "https://github.com/StudioNAND/next-template"`
+`npx degit StudioNAND/next-template your_project_name`
 
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
