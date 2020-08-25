@@ -1,13 +1,12 @@
 const next = require('next');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const mobxReact = require('mobx-react');
 const dev = process.env.NODE_ENV !== 'production';
 
 // create a next server instance
 const nextApp = next({ dev, dir: './src' });
-const handle = nextApp.getRequestHandler();
+const nextAppHandle = nextApp.getRequestHandler();
 
 // prevents mobx server memory leak
 mobxReact.useStaticRendering(true);
@@ -20,7 +19,7 @@ async function boostrap() {
   const server = express();
   server.use(cookieParser());
   // bind the next routing handles for the other
-  server.use(handle);
+  server.use(nextAppHandle);
   server.listen(process.env.PORT, process.env.HOSTNAME, error => {
     if (error) throw error;
     console.log(`> Ready on http://${process.env.HOSTNAME}:${process.env.PORT}`); // eslint-disable-line no-console
