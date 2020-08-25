@@ -9,5 +9,6 @@ node_modules
 # logs
 npm-debug.log
 
-.env
 .npmrc
+.env*.local
+!./src/.env

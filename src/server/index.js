@@ -3,9 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mobxReact = require('mobx-react');
-const { NODE_ENV, HOSTNAME, PORT } = require('./constants');
-
-const dev = NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'production';
 
 // create a next server instance
 const nextApp = next({ dev, dir: './src' });
@@ -23,9 +21,9 @@ async function boostrap() {
   server.use(cookieParser());
   // bind the next routing handles for the other
   server.use(handle);
-  server.listen(PORT, HOSTNAME, error => {
+  server.listen(process.env.PORT, process.env.HOSTNAME, error => {
     if (error) throw error;
-    console.log(`> Ready on http://${HOSTNAME}:${PORT}`); // eslint-disable-line no-console
+    console.log(`> Ready on http://${process.env.HOSTNAME}:${process.env.PORT}`); // eslint-disable-line no-console
   });
 }
 
