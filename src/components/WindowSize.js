@@ -9,7 +9,8 @@ const WindowSize = () => {
 
   React.useEffect(() => {
     window.addEventListener('resize', dataStore.window.setWindowSize);
-    return () => window.removeEventListener('resize', dataStore.window.setWindowSize);
+    return () =>
+      window.removeEventListener('resize', dataStore.window.setWindowSize);
   }, []);
 
   return useObserver(() => (

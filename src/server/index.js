@@ -22,7 +22,9 @@ async function boostrap() {
   server.use(nextAppHandle);
   server.listen(process.env.PORT, process.env.HOSTNAME, error => {
     if (error) throw error;
-    console.log(`> Ready on http://${process.env.HOSTNAME}:${process.env.PORT}`); // eslint-disable-line no-console
+    console.log(
+      `> Ready on http://${process.env.HOSTNAME}:${process.env.PORT}`,
+    ); // eslint-disable-line no-console
   });
 }
 

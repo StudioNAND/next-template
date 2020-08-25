@@ -14,9 +14,7 @@ class MyApp extends App {
     const isServer = !!ctx.req;
 
     if (isServer) {
-      const {
-        dataStore: dsInstance,
-      } = getStoreInstances();
+      const { dataStore: dsInstance } = getStoreInstances();
       dataStore = dsInstance;
     }
 

@@ -2,14 +2,14 @@ import { observable, action, toJS } from 'mobx';
 import Window from './modules/Window';
 
 class DataStore {
-	@observable
+  @observable
   isLoading = true;
 
   constructor() {
-  	this.window = new Window({});
+    this.window = new Window({});
   }
 
-  // async function that initializes the stores 
+  // async function that initializes the stores
   @action.bound
   initialize = async () => {
     this.isLoading = true;
@@ -18,7 +18,7 @@ class DataStore {
 
   // function to re-hydrate store from a serialized snapshot
   hydrate = snapshot => {
-  	this.window.hydrate(snapshot.window); 
+    this.window.hydrate(snapshot.window);
   };
 
   // funciton that creates the snapshot of thr store
@@ -28,7 +28,7 @@ class DataStore {
     return toJS(rest);
   };
 
-  connectStores = ({ }) => {  };
+  connectStores = ({}) => {};
 }
 
 export default DataStore;

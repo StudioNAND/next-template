@@ -19,8 +19,8 @@ class Window {
   }
 
   hydrate(snapshot) {
-  	this.width = snapshot.width;
-  	this.height = snapshot.height;
+    this.width = snapshot.width;
+    this.height = snapshot.height;
   }
 }
 
