@@ -7,22 +7,19 @@ To setup a new project based on this template, just run:
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
   - [Environment variables](#environment-variables)
-  - [Working with linked modules](#working-with-linked-modules)
 - [ESlint and Prettier](#eslint-and-prettier)
-  - [ESLint pre-commit hook](#eslint-pre-commit-hook)
 - [Material-UI and JSS](#material-ui-and-jss)
 
 ___________
 
 ## Project structure
 
-- `/server/index`: the custom next.js server
-- `/server/routes`: the routes configuration
-- `/server/constants`: variables used for the server
-- `/pages`: All main entry points of the application
-- `/components`: All components that define the application
-- `/utils`: All utility functions
-- `/stores`: All stores that hold the state of the application
+- `src/server/index`: the custom next.js server
+- `src/pages`: All main entry points of the application
+- `src/components`: All components that define the application
+- `src/utils`: All utility functions
+- `src/stores`: All stores that hold the state of the application
+- `src/.env`: Default environment variables [details](https://nextjs.org/docs/basic-features/environment-variables#default-environment-variables)
 
 ## Getting started
 
@@ -39,12 +36,7 @@ registry=https://npm.pkg.github.com/studionand
 - `npm run dist`: build production app
 - `npm run serve`: serve production app
 
-By default the server will start on `0.0.0.0:80`. You can change the port by defining `HOSTNAME` and `PORT` inside the `.env` file in your root directory.
-
-```
-HOSTNAME=0.0.0.0
-PORT=80
-```
+By default the server will start on `0.0.0.0:80`. `PORT` and `HOSTNAME` are defined as default [environment variables](#environment-variables).
 
 ### Environment variables
 
