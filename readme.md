@@ -1,6 +1,8 @@
 # Next.js Template
 
-This repo is meant to be the template to start a new frontend project @StudioNAND. It is based on this article on [Next.js](https://github.com/zeit/next.js/). The project uses [material-ui](https://material-ui.com/) and [jss](http://cssinjs.org/) by default because its awesome ;)
+To setup a new project based on this template, just run:
+
+`npx create-next-app your_project_name --use-npm --example "https://github.com/StudioNAND/next-template"`
 
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
