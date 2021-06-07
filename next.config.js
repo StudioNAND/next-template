@@ -1,5 +1,9 @@
 const config = {
-  webpack: function(cfg) {
+  future: {
+    webpack5: true,
+  },
+
+  webpack: function (cfg) {
     const originalEntry = cfg.entry;
     cfg.entry = async () => {
       const entries = await originalEntry();
