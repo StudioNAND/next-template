@@ -1,5 +1,8 @@
 import DataStore from './DataStore';
 // import UiStore from './UiStore';
+import { configure } from 'mobx';
+
+configure({ useProxies: 'never' });
 
 export const getStoreInstances = () => {
   const dataStore = new DataStore();
