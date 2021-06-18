@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useObserver } from 'mobx-react';
+import { observer } from 'mobx-react';
 import Typography from '@material-ui/core/Typography';
 import useStores from '../utils/useStores';
 
-const WindowSize = () => {
+const WindowSize = observer(() => {
   const { dataStore } = useStores();
 
   React.useEffect(() => {
@@ -13,7 +13,7 @@ const WindowSize = () => {
       window.removeEventListener('resize', dataStore.window.setWindowSize);
   }, []);
 
-  return useObserver(() => (
+  return (
     <div>
       <Typography variant="h6">
         width: {dataStore.window.width}
@@ -24,7 +24,7 @@ const WindowSize = () => {
         px
       </Typography>
     </div>
-  ));
-};
+  );
+});
 
 export default WindowSize;
