@@ -25,8 +25,15 @@ ___________
 
 You must create a `.npmrc` file to access the @studionand github registry.
 
+#### old format node <= 14
 ```
 registry=https://npm.pkg.github.com/studionand
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+```
+
+#### new format node > 14
+```
+@studionand:registry=https://npm.pkg.github.com/studionand
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN
 ```
 
@@ -54,6 +61,3 @@ Using `eslint-plugin-prettier` over prettier CLI has the advantage that errors a
 
 ##### Note: It is possible that we still have conflicting rules between the `eslint` and `prettier`, because we are not using `eslint-config-prettier` yet. Please open an issue if you experience any problems with the linting configuration.
 
-## Material-UI and JSS
-
-The project uses [material-ui](https://material-ui.com/) and [jss](http://cssinjs.org/) by default.
