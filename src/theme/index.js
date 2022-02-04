@@ -1,3 +1,21 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from "@mui/material/styles";
 
-export default createMuiTheme({});
+const theme = createTheme({
+});
+
+theme.components = {
+  MuiCssBaseline: {
+  styleOverrides: {
+
+    html: {
+      fontSize: `${theme.htmlFontSize}px`,
+    },
+    body: {
+      backgroundColor: theme.palette.background.page,
+      color: theme.palette.text.default,
+    },
+  }
+  }
+}
+
+export default theme;

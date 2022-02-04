@@ -1,20 +1,10 @@
-import { observable, action, toJS } from 'mobx';
+import { toJS } from 'mobx';
 import Window from './modules/Window';
 
 class DataStore {
-  @observable
-  isLoading = true;
-
   constructor() {
     this.window = new Window({});
   }
-
-  // async function that initializes the stores
-  @action.bound
-  initialize = async () => {
-    this.isLoading = true;
-    this.isLoading = false;
-  };
 
   // function to re-hydrate store from a serialized snapshot
   hydrate = snapshot => {
@@ -23,7 +13,7 @@ class DataStore {
 
   // funciton that creates the snapshot of thr store
   // you should extract connected stores via destructuring
-  getSnapshot = () => {
+  toJSON = () => {
     const { ...rest } = this;
     return toJS(rest);
   };

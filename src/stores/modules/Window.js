@@ -1,18 +1,22 @@
-import { observable, action } from 'mobx';
+import { makeObservable, observable, computed, action, flow } from "mobx";
 
 class Window {
-  @observable
   width = 0;
-  @observable
   height = 0;
+  constructor(props) {
+    makeObservable(this, {
+      width: observable,
+      height: observable, 
+      setWindowSize: action.bound,
+      setSize: action.bound,
+    });
+  }
 
-  @action.bound
   setWindowSize() {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
   }
 
-  @action
   setSize({ width, height }) {
     this.width = width;
     this.height = height;

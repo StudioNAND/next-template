@@ -1,4 +1,7 @@
 const config = {
+  experimental: {
+    esmExternals: true,
+  },
   webpack: function(cfg) {
     const originalEntry = cfg.entry;
     cfg.entry = async () => {
